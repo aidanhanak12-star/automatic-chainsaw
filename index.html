@@ -1,0 +1,98 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Property Map</title>
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        #map {
+            height: 100vh; /* Makes map take up full screen */
+            width: 100%;
+        }
+        .popup-content img {
+            max-width: 100%;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+        .popup-content h3 {
+            margin: 5px 0;
+            color: #333;
+        }
+        .popup-content p {
+            margin: 5px 0;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <script>
+        // 1. Initialize the map and set its view (Latitude, Longitude, Zoom Level)
+        // Shifting view to a sample location (e.g., Austin, Texas)
+        const map = L.map('map').setView([30.2672, -97.7431], 13);
+
+        // 2. Load and display OpenStreetMap tile layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        // 3. Mock Property Data (Replace this with live API data later)
+        const properties = [
+            {
+                id: 1,
+                title: "Modern Suburban Home",
+                price: "$450,000",
+                beds: 3,
+                baths: 2,
+                lat: 30.2672,
+                lng: -97.7431,
+                img: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=200&q=80",
+                link: "https://www.zillow.com" // You can dynamically generate actual Zillow links here
+            },
+            {
+                id: 2,
+                title: "Luxury Downtown Condo",
+                price: "$895,000",
+                beds: 2,
+                baths: 2,
+                lat: 30.2750,
+                lng: -97.7500,
+                img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=200&q=80",
+                link: "https://www.redfin.com"
+            }
+        ];
+
+        // 4. Loop through properties and add markers to the map
+        properties.forEach(property => {
+            // Create marker
+            const marker = L.marker([property.lat, property.lng]).addTo(map);
+
+            // Create interactive HTML popup content
+            const popupMarkup = `
+                <div class="popup-content">
+                    <img src="${property.img}" alt="${property.title}">
+                    <h3>${property.price}</h3>
+                    <p><strong>${property.title}</strong></p>
+                    <p>${property.beds} bds | ${property.baths} ba</p>
+                    <a href="${property.link}" target="_blank" style="color: #006aff; text-decoration: none; font-weight: bold;">View Details</a>
+                </div>
+            `;
+
+            // Bind popup to marker
+            marker.bindPopup(popupMarkup);
+        });
+    </script>
+</body>
+</html>
