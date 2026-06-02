@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "title": "Charming Craftsman Home",
+    "price": "$525,000",
+    "beds": 3,
+    "baths": 2,
+    "lat": 30.2672,
+    "lng": -97.7431,
+    "img": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=200&q=80"
+  },
+  {
+    "id": 2,
+    "title": "Modern Downtown Loft",
+    "price": "$950,000",
+    "beds": 2,
+    "baths": 2,
+    "lat": 30.2750,
+    "lng": -97.7500,
+    "img": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=200&q=80"
+  },
+  {
+    "id": 3,
+    "title": "Spacious Family Estate",
+    "price": "$1,200,000",
+    "beds": 5,
+    "baths": 4,
+    "lat": 30.2500,
+    "lng": -97.7200,
+    "img": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=200&q=80"
+  }
+]
